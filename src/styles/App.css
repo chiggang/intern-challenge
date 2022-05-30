@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/**
+ * Font
+ */
+@layer base {
+  @font-face {
+    font-family: 'NanumSquare Regular';
+    src: url('./fonts/NanumSquareRegular.woff2') format('woff2'),
+      url('./fonts/NanumSquareR.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'NanumSquare Bold';
+    src: url('./fonts/NanumSquareBold.woff2') format('woff2'),
+      url('./fonts/NanumSquareB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'NanumBarunGothic';
+    src: url('./fonts/NanumBarunGothic.woff2') format('woff2'),
+      url('./fonts/NanumBarunGothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  @font-face {
+    font-family: 'NanumBarunGothicBold Bold';
+    src: url('./fonts/NanumBarunGothicBold.woff2') format('woff2'),
+      url('./fonts/NanumBarunGothicBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+}
+.font-nanumsquare-regular {
+  font-family: 'NanumSquare Regular' !important;
+}
+.font-nanumsquare-bold {
+  font-family: 'NanumSquare Bold' !important;
+}
+.font-nanumbarungothic {
+  font-family: 'NanumBarunGothic' !important;
+}
+.font-nanumbarungothicbold-bold {
+  font-family: 'NanumBarunGothicBold Bold' !important;
+}
+
+/* Text shadow */
+.text-shadow {
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
+}
+.text-shadow-2 {
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 2px;
+}
+.text-shadow-3 {
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px;
+}
+.text-shadow-4 {
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 4px;
+}
+.text-shadow-5 {
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 5px;
+}
+
+/* Text drop shadow */
+.text-drop-shadow {
+  text-shadow: rgba(0, 0, 0, 0.5) 0 0 1px;
+}
+.text-drop-shadow-2 {
+  text-shadow: rgba(0, 0, 0, 0.5) 0 0 2px;
+}
+.text-drop-shadow-3 {
+  text-shadow: rgba(0, 0, 0, 0.5) 0 0 3px;
+}
+.text-drop-shadow-4 {
+  text-shadow: rgba(0, 0, 0, 0.5) 0 0 4px;
+}
+.text-drop-shadow-5 {
+  text-shadow: rgba(0, 0, 0, 0.5) 0 0 5px;
+}
+
+/* SVG shadow */
+.svg-shadow {
+  filter: drop-shadow(1px 1px 1px rgba(0, 0, 0, 0.3));
+}
+.svg-shadow-2 {
+  filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.3));
+}
+.svg-shadow-3 {
+  filter: drop-shadow(1px 1px 3px rgba(0, 0, 0, 0.3));
+}
+.svg-shadow-4 {
+  filter: drop-shadow(1px 1px 4px rgba(0, 0, 0, 0.3));
+}
+.svg-shadow-5 {
+  filter: drop-shadow(1px 1px 5px rgba(0, 0, 0, 0.3));
+}
+
+/* SVG drop shadow */
+.svg-drop-shadow {
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.3));
+}
+.svg-drop-shadow-2 {
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.3));
+}
+.svg-drop-shadow-3 {
+  filter: drop-shadow(0 0 3px rgba(0, 0, 0, 0.3));
+}
+.svg-drop-shadow-4 {
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.3));
+}
+.svg-drop-shadow-5 {
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+}
+
+/* Button */
+.button {
+  user-select: none;
+  cursor: pointer !important;
+}
+.button:hover {
+  opacity: 0.8 !important;
+}
+.button:active {
+  transform: translate(1px, 1px) !important;
+}
+
+/* Input form: Text */
+.input-form input[type='text'] {
+  height: 100%;
+  padding: 2px 5px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgb(229, 231, 235);
+  background-color: rgb(0, 0, 0);
+  border-radius: 0.25rem;
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
+}
+.input-form input[type='text']:hover {
+  background-color: rgb(15, 23, 42);
+}
+.input-form input[type='text']:focus {
+  outline: none;
+  background-color: rgb(15, 23, 42);
+}
+
+/* Input form: CheckBox */
+.input-form input[type='checkbox'] {
+  outline: none;
+}
+.input-form input[type='checkbox']:hover {
+}
+.input-form input[type='checkbox']:focus {
+}
+
+/* Input form: Select */
+.input-form select {
+  height: 100%;
+  padding: 2px 5px;
+  font-size: 0.75rem;
+  line-height: 1rem;
+  color: rgb(229, 231, 235);
+  background-color: rgb(0, 0, 0);
+  border-radius: 0.25rem;
+  outline: none;
+  text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;
+}
+.input-form select:hover {
+  background-color: rgb(15, 23, 42);
+}
+.input-form select:focus {
+  background-color: rgb(15, 23, 42);
+}
+.input-form option {
+  /*height: 100%;*/
+  /*padding: 2px 5px;*/
+  /*font-size: 0.75rem;*/
+  /*line-height: 1rem;*/
+  /*color: rgb(229, 231, 235);*/
+  /*background-color: rgb(0, 0, 0);*/
+  /*border-radius: 0.25rem;*/
+  /*outline: none;*/
+  /*text-shadow: rgba(0, 0, 0, 0.5) 1px 1px 1px;*/
+  /*color: black;*/
+}
+
+/* 평가 레이어의 출력 애니메이션 */
+@keyframes ani-show-comment-layer {
+  0% {
+    transform: translateY(-10px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.show-comment-layer {
+  animation: ani-show-comment-layer 0.3s ease-out forwards;
+}

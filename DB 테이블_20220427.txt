@@ -1,0 +1,212 @@
+
+-- challenge: 개발 과제
+CREATE TABLE public.challenge (
+	id integer NOT NULL DEFAULT nextval('seq_challenge'),
+	subject varchar(200) NOT NULL,
+	available char(1) NOT NULL DEFAULT 'Y',
+	create_at timestamp NULL DEFAULT CURRENT_TIMESTAMP
+);
+COMMENT ON TABLE public.challenge IS '개발 과제';
+
+-- Column comments
+COMMENT ON COLUMN public.challenge.id IS '개발 과제 고유번호';
+COMMENT ON COLUMN public.challenge.subject IS '제목';
+COMMENT ON COLUMN public.challenge.available IS '사용 가능 여부(Y: 사용 가능, N: 사용 불가)';
+COMMENT ON COLUMN public.challenge.create_at IS '생성 일시';
+
+-- 기초 데이터
+insert into challenge (subject) values ('직원 연차 관리');
+
+
+
+-- assignment: 개발 과제 할당
+CREATE TABLE public.assignment (
+	challenger_id integer NOT NULL,
+	challenge_id integer NOT NULL,
+	challenge_start_date varchar(8) NULL,
+	challenge_end_date varchar(8) NULL,
+    first_comment_start_datetime varchar(8) NULL,
+    first_comment_end_datetime varchar(8) NULL,
+    second_comment_start_datetime varchar(8) NULL,
+    second_comment_end_datetime varchar(8) NULL,
+	url varchar(300) NULL,
+	available char(1) NOT NULL DEFAULT 'Y',
+	create_at timestamp NULL DEFAULT CURRENT_TIMESTAMP
+);
+COMMENT ON TABLE public.assignment IS '개발 과제 할당';
+
+-- Column comments
+COMMENT ON COLUMN public.assignment.challenger_id IS '수행자 고유번호';
+COMMENT ON COLUMN public.assignment.challenge_id IS '개발 과제 고유번호';
+COMMENT ON COLUMN public.assignment.challenge_start_date IS '수행 시작 일자';
+COMMENT ON COLUMN public.assignment.challenge_end_date IS '수행 종료 일자';
+COMMENT ON COLUMN public.assignment.first_comment_start_datetime IS '1차 평가 댓글 작성 가능 시작 일시(년월일시분초)';
+COMMENT ON COLUMN public.assignment.first_comment_end_datetime IS '1차 평가 댓글 작성 가능 종료 일시';
+COMMENT ON COLUMN public.assignment.second_comment_start_datetime IS '2차 평가 댓글 작성 가능 시작 일시';
+COMMENT ON COLUMN public.assignment.second_comment_end_datetime IS '2차 평가 댓글 작성 가능 종료 일시';
+COMMENT ON COLUMN public.assignment.url IS '사이트 접속 링크 주소';
+COMMENT ON COLUMN public.assignment.available IS '사용 가능 여부(Y: 사용 가능, N: 사용 불가)';
+COMMENT ON COLUMN public.assignment.create_at IS '생성 일시';
+
+-- 기초 데이터
+-- 김용환
+insert into assignment (
+    challenger_id,
+    challenge_id,
+    challenge_start_date,
+    challenge_end_date,
+    first_comment_start_datetime,
+    first_comment_end_datetime,
+    second_comment_start_datetime,
+    second_comment_end_datetime,
+    url
+) values (
+    1,
+    1,
+    '20220501',
+    '20220531',
+    '20220516',
+    '20220517',
+    '20220530',
+    '20220531',
+    'http://timworx.com:20011'
+);
+
+-- 최성준
+insert into assignment (
+    challenger_id,
+    challenge_id,
+    challenge_start_date,
+    challenge_end_date,
+    first_comment_start_datetime,
+    first_comment_end_datetime,
+    second_comment_start_datetime,
+    second_comment_end_datetime,
+    url
+) values (
+    2,
+    1,
+    '20220501',
+    '20220531',
+    '20220516',
+    '20220517',
+    '20220530',
+    '20220531',
+    'http://timworx.com:20012'
+);
+
+
+
+-- challenger: 개발 과제 수행자
+CREATE TABLE public.challenger (
+	id integer NOT NULL DEFAULT nextval('seq_challenger'),
+	name varchar(100) NOT NULL,
+	image_url varchar(1000) NULL,
+	create_at timestamp NULL DEFAULT CURRENT_TIMESTAMP
+);
+COMMENT ON TABLE public.challenger IS '개발 과제 수행자';
+
+-- Column comments
+COMMENT ON COLUMN public.challenger.id IS '수행자 고유번호';
+COMMENT ON COLUMN public.challenger.name IS '이름';
+COMMENT ON COLUMN public.challenger.image_url IS '대표 이미지 url 경로';
+COMMENT ON COLUMN public.challenger.create_at IS '생성 일시';
+
+-- 기초 데이터
+insert into challenger (name, image_url) values ('김용환', '/images/challenger/jeju.jpg');
+insert into challenger (name, image_url) values ('최성준', '');
+
+
+
+-- member: 사용자
+CREATE TABLE public.member (
+	id integer NOT NULL DEFAULT nextval('seq_member'),
+	name varchar(100) NOT NULL,
+	phone_last_number varchar(4) NOT NULL,
+	sort_no integer NOT NULL DEFAULT 1,
+	available char(1) NOT NULL DEFAULT 'Y',
+	create_at timestamp NULL DEFAULT CURRENT_TIMESTAMP
+);
+COMMENT ON TABLE public.member IS '사용자';
+
+-- Column comments
+COMMENT ON COLUMN public.member.id IS '사용자 고유번호';
+COMMENT ON COLUMN public.member.name IS '이름';
+COMMENT ON COLUMN public.member.phone_last_number IS '휴대폰 뒷번호 4자리';
+COMMENT ON COLUMN public.member.sort_no IS '정렬 순서';
+COMMENT ON COLUMN public.member.available IS '사용 가능 여부(Y: 사용 가능, N: 사용 불가)';
+COMMENT ON COLUMN public.member.create_at IS '생성 일시';
+
+-- 기초 데이터
+insert into member (name, phone_last_number, sort_no) values ('김지인', '2444', 1);
+insert into member (name, phone_last_number, sort_no) values ('김인수', '8908', 2);
+insert into member (name, phone_last_number, sort_no) values ('손병준', '9546', 3);
+insert into member (name, phone_last_number, sort_no) values ('이규홍', '8608', 4);
+insert into member (name, phone_last_number, sort_no) values ('이경진', '7062', 5);
+insert into member (name, phone_last_number, sort_no) values ('송희삼', '8828', 6);
+insert into member (name, phone_last_number, sort_no) values ('백진욱', '0622', 7);
+insert into member (name, phone_last_number, sort_no) values ('조용인', '5307', 8);
+insert into member (name, phone_last_number, sort_no) values ('최이규', '1419', 9);
+insert into member (name, phone_last_number, sort_no) values ('김동찬', '9588', 10);
+insert into member (name, phone_last_number, sort_no) values ('황상문', '5672', 11);
+insert into member (name, phone_last_number, sort_no) values ('이호산', '2542', 12);
+insert into member (name, phone_last_number, sort_no) values ('김지원', '4023', 13);
+insert into member (name, phone_last_number, sort_no) values ('김용석', '8466', 14);
+insert into member (name, phone_last_number, sort_no) values ('최민석', '9064', 15);
+insert into member (name, phone_last_number, sort_no) values ('김신형', '1112', 16);
+insert into member (name, phone_last_number, sort_no) values ('차준', '6800', 17);
+insert into member (name, phone_last_number, sort_no) values ('정영건', '0406', 18);
+insert into member (name, phone_last_number, sort_no) values ('심유철', '9110', 19);
+insert into member (name, phone_last_number, sort_no) values ('최석열', '1002', 20);
+insert into member (name, phone_last_number, sort_no) values ('전민경', '0586', 21);
+insert into member (name, phone_last_number, sort_no) values ('김경민', '7390', 22);
+insert into member (name, phone_last_number, sort_no) values ('이승우', '3232', 23);
+insert into member (name, phone_last_number, sort_no) values ('오철원', '9528', 24);
+insert into member (name, phone_last_number, sort_no) values ('원주원', '9611', 25);
+insert into member (name, phone_last_number, sort_no) values ('김민지', '8830', 26);
+insert into member (name, phone_last_number, sort_no) values ('김아름', '5817', 27);
+insert into member (name, phone_last_number, sort_no) values ('류재임', '9773', 28);
+insert into member (name, phone_last_number, sort_no) values ('안의정', '5062', 29);
+insert into member (name, phone_last_number, sort_no) values ('이송섭', '9811', 30);
+insert into member (name, phone_last_number, sort_no) values ('윤정호', '0722', 31);
+insert into member (name, phone_last_number, available, sort_no) values ('김용환', '0273', 'N', 32);
+insert into member (name, phone_last_number, available, sort_no) values ('최성준', '5404', 'N', 33);
+
+
+
+-- system: 시스템
+CREATE TABLE public.system (
+	password varchar(300) NULL,
+	create_at timestamp NULL DEFAULT CURRENT_TIMESTAMP
+);
+COMMENT ON TABLE public.system IS '시스템';
+
+-- Column comments
+COMMENT ON COLUMN public.system.password IS '관리자 페이지 접속용 비밀번호';
+COMMENT ON COLUMN public.system.create_at IS '생성 일시';
+
+-- 기초 데이터
+insert into system (password) values ('solution1!');
+
+
+
+-- comment: 댓글
+CREATE TABLE public.comment (
+	challenge_id integer NOT NULL,
+	comment_time char(1) NOT NULL DEFAULT '1',
+	challenger_id integer NOT NULL,
+	member_id integer NOT NULL,
+	star_score integer NULL DEFAULT 0,
+	comment varchar(3000) NULL,
+	create_at timestamp NULL DEFAULT CURRENT_TIMESTAMP
+);
+COMMENT ON TABLE public.comment IS '댓글';
+
+-- Column comments
+COMMENT ON COLUMN public.comment.challenge_id IS '개발 과제 고유번호';
+COMMENT ON COLUMN public.comment.comment_time IS '평가 회차(1: 1회차, 2: 2회차)';
+COMMENT ON COLUMN public.comment.challenger_id IS '수행자 고유번호';
+COMMENT ON COLUMN public.comment.member_id IS '사용자 고유번호';
+COMMENT ON COLUMN public.comment.star_score IS '별점(0~5)';
+COMMENT ON COLUMN public.comment.comment IS '댓글';
+COMMENT ON COLUMN public.comment.create_at IS '생성 일시';

@@ -1,0 +1,11 @@
+{
+  "api": {
+    "_comment": {
+      "commonUrl": "RESTful API 주소"
+    },
+    "commonUrl": {
+      "host": "http://172.30.1.200",
+      "port": "20002"
+    }
+  }
+}
